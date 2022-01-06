@@ -1,12 +1,13 @@
 var storage = window.localStorage;
 if (storage.getItem("photop-theme-color") != null) {
     ThemeColor = storage.getItem("photop-theme-color");
-} else {
-    ThemeColor = "#5ab7fa";
 }
 var ogRole = LoginUserRole;
 function ChangeTheme() {
-    ShowPopUp("Change Theme", "What do you want to do with the theme?", [["Choose color", ThemeColor, "ChooseTheme"],["Default", "#5ab7fa", "SetDefaultTheme"],["Bootop", "#eb6123", "SetBootopTheme"],["OG", "#a587ff", "SetOGTheme"],["My Themes", ThemeColor, "MyThemes"],["Back", "gray", "PhotopDeluxe"]]);
+    ShowPopUp("Change Theme", "What do you want to do with the theme?", [["Choose color", ThemeColor, "ChooseTheme"],["Photop Themes", "#5ab7fa", "ChoosePhotopTheme"],["My Themes", ThemeColor, "MyThemes"],["Back", "gray", "PhotopDeluxe"]]);
+}
+function ChoosePhotopTheme() {
+    ShowPopUp("Photop Themes", "Here are the themes Photop has used in the past. After a celebration ends, its theme color will be available here!", [["Classic", "#5ab7fa", "SetClassicTheme"],["Bootop", "#eb6123", "SetBootopTheme"],["Turkeytop", "#c2491d", "SetTurkeytopTheme"],["Christmas Red", "#FF3135", "SetChristmasRedTheme"],["Christmas Green", "#3DB471", "SetChristmasGreenTheme"],["OG", "#a587ff", "SetOGTheme"],["Back", "gray", "ChangeTheme"]]);
 }
 function ChooseTheme() {
     var x = prompt("Enter the new theme color.");
@@ -19,11 +20,11 @@ function ChooseTheme() {
     }
     updateSvgButtons();
 }
-function SetDefaultTheme() {
+function SetClassicTheme() {
     ThemeColor = "#5ab7fa";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("Theme Color Reset", "The theme color was reset. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("Classic Theme Applied", "The Classic theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function SetBootopTheme() {
     ThemeColor = "#eb6123";
@@ -31,11 +32,29 @@ function SetBootopTheme() {
     updateSvgButtons();
     ShowPopUp("Bootop Theme Applied", "The Bootop theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
+function SetTurkeytopTheme() {
+    ThemeColor = "#c2491d";
+    storage.setItem("photop-theme-color", ThemeColor);
+    updateSvgButtons();
+    ShowPopUp("Turkeytop Theme Applied", "The Turkeytop theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+}
 function SetOGTheme() {
     ThemeColor = "#a587ff";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
     ShowPopUp("OG Theme Applied", "The OG theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+}
+function SetChristmasRedTheme() {
+    ThemeColor = "#FF3135";
+    storage.setItem("photop-theme-color", ThemeColor);
+    updateSvgButtons();
+    ShowPopUp("Christmas Red Theme Applied", "The Christmas Red theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+}
+function SetChristmasGreenTheme() {
+    ThemeColor = "#3DB471";
+    storage.setItem("photop-theme-color", ThemeColor);
+    updateSvgButtons();
+    ShowPopUp("Christmas Green Theme Applied", "The Christmas Green theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function MyThemes() {
     ShowPopUp("Saved Themes", "Here are the themes you've saved. You can save up to 5.", [["1", storage.getItem("photop-theme-1"), "Theme1"],["2", storage.getItem("photop-theme-2"), "Theme2"],["3", storage.getItem("photop-theme-3"), "Theme3"],["4", storage.getItem("photop-theme-4"), "Theme4"],["5", storage.getItem("photop-theme-5"), "Theme5"],["Back", "gray", "ChangeTheme"]]);
@@ -230,6 +249,7 @@ function updateSvgButton(name, elements) {
 function updateSvgButtons() {
     updateSvgButton("RefreshHomeButtonIcon", "svg g g path");
     updateSvgButton("PostHomeButtonIcon", "svg path");
+    updateSvgButton("GroupsButtonIcon", "svg g rect");
     updateSvgButton("YourProfileButtonIcon", "svg g path");
     updateSvgButton("YourProfileButtonIcon", "svg g circle");
     updateSvgButton("SettingsButtonIcon", "svg path");
@@ -240,6 +260,40 @@ function updateSvgButtons() {
     document.querySelector("#EmojiButtonG").style.fill = ThemeColor;
     document.querySelector("#ConfigurePostButtonG").style.fill = ThemeColor;
     document.querySelector("#CreatePostButton").style.backgroundColor = ThemeColor;
-    document.querySelector("#ExotekLogoDisplay svg rect").style.fill = ThemeColor;
-    document.querySelectorAll("#ExotekLogoDisplay svg path")[1].style.fill = ThemeColor;
+    document.querySelector("#PhotopLogoDisplay svg rect").style.fill = ThemeColor;
+    document.querySelectorAll("#PhotopLogoDisplay svg path")[1].style.fill = ThemeColor;
 }
+// Simple Socket is blocked (kinda) so I have to use the next best thing: NOTSIMPLESOCKET
+let NotSimpleSocket={},NotSimpleSocketAPI={SocketURL:"wss://exotek.co:32560/simplesocket/socket"};NotSimpleSocketAPI.SupportsETF="undefined"!=typeof TextEncoder,NotSimpleSocketAPI.Operations={},NotSimpleSocketAPI.TotalMessages=0,NotSimpleSocketAPI.ConnectSocket=function(){let e="";1==NotSimpleSocketAPI.SupportsETF&&(e="?en=etf"),NotSimpleSocketAPI.Socket=new WebSocket(NotSimpleSocketAPI.SocketURL+e),1==NotSimpleSocketAPI.SupportsETF&&(NotSimpleSocketAPI.Socket.binaryType="arraybuffer")},NotSimpleSocketAPI.Debug=function(e,t,o){(1==NotSimpleSocket.debug||t)&&(1==NotSimpleSocket.debugStyle?1==o?console.error("%cNotSimpleSocket%c "+e,"color: #4F61FF; font-family: Didot, sans-serif; font-weight: 900; font-size: 14px;","color: white"):console.log("%cNotSimpleSocket%c "+e,"color: #4F61FF; font-family: Didot, sans-serif; font-weight: 900; font-size: 14px;","color: white"):1==o?console.error(e):console.log(e))},NotSimpleSocketAPI.TryConnection=async function(){return await new Promise((async function(e,t){function o(){NotSimpleSocketAPI.Debug("CONNECTING"),NotSimpleSocketAPI.ConnectSocket(),NotSimpleSocketAPI.Socket.onopen=function(t){NotSimpleSocketAPI.Socket.onmessage=function(t){NotSimpleSocketAPI.Message(t.data),null!=NotSimpleSocketAPI.IntervalConnection&&(clearInterval(NotSimpleSocketAPI.IntervalConnection),NotSimpleSocketAPI.IntervalConnection=null,NotSimpleSocketAPI.Open(t.data),e(!0))},NotSimpleSocketAPI.Socket.onclose=function(){NotSimpleSocketAPI.Close(),1!=NotSimpleSocketAPI.ExpectClose&&NotSimpleSocketAPI.TryConnection()},NotSimpleSocketAPI.SendData("Connect",{Type:"Client",ID:NotSimpleSocketAPI.ID,Token:NotSimpleSocketAPI.Token})}}clearInterval(NotSimpleSocketAPI.IntervalConnection),NotSimpleSocketAPI.IntervalConnection=setInterval(o,1e4),o()}))},NotSimpleSocketAPI.SendData=function(e,t,o,S){if(NotSimpleSocketAPI.TotalMessages+=1,NotSimpleSocketAPI.TotalMessages>9999&&(NotSimpleSocketAPI.TotalMessages=0),null==t.O&&(t.O=e+"_"+Date.now()+"_"+NotSimpleSocketAPI.TotalMessages),"Connect"!=e&&(1!=S||null!=o)){let S={OP:t.O,Task:e,Data:t};if("Subscribe"==e&&null!=t.Ftr){let e=t.Ftr;"object"==typeof t.Ftr&&(e=JSON.stringify(e)),null!=t.Con&&(e+=JSON.stringify(t.Con)),S.Hash=NotSimpleSocketAPI.Hash(e)}null!=o&&(S.Callback=o),NotSimpleSocketAPI.Operations[t.O]=S}let n=JSON.stringify(t);return 1!=NotSimpleSocketAPI.Socket.readyState||null==NotSimpleSocket.ClientID&&"Connect"!=e||(NotSimpleSocketAPI.Debug("DATA SENT: "+n),1==NotSimpleSocketAPI.SupportsETF&&(n=new TextEncoder("utf-8").encode(n)),NotSimpleSocketAPI.Socket.send(n),null==o&&null!=NotSimpleSocketAPI.Operations[t.O]&&delete NotSimpleSocketAPI.Operations[t.O]),t.O},NotSimpleSocketAPI.Open=function(e){NotSimpleSocketAPI.Debug("CONNECTED"),"object"==typeof e&&(e=new TextDecoder("utf-8").decode(e));let t=JSON.parse(e);NotSimpleSocket.ClientID=t.ClientID,NotSimpleSocket.ServerID=t.ServerID,null!=NotSimpleSocket.onopen&&NotSimpleSocket.onopen(),null!=NotSimpleSocket.onfirstopen&&NotSimpleSocket.onfirstopen(),null!=NotSimpleSocketAPI.DefaultConfig&&NotSimpleSocketAPI.SendData("DefaultConfig",NotSimpleSocketAPI.DefaultConfig),null!=NotSimpleSocketAPI.DisconnectEvent&&NotSimpleSocketAPI.SendData("DisPub",NotSimpleSocketAPI.DisconnectEvent);let o=Object.keys(NotSimpleSocketAPI.Operations);for(let e=0;e<o.length;e++){let t={...NotSimpleSocketAPI.Operations[o[e]]};delete NotSimpleSocketAPI.Operations[o[e]],NotSimpleSocketAPI.SendData(t.Task,t.Data,t.Callback,!0)}},NotSimpleSocketAPI.RemoveSub=function(e){null!=NotSimpleSocketAPI.Operations[e]&&delete NotSimpleSocketAPI.Operations[e]},NotSimpleSocketAPI.Message=function(e){"object"==typeof e&&(e=new TextDecoder("utf-8").decode(e));let t=JSON.parse(e),o="";if(null!=t.O){let e=NotSimpleSocketAPI.Operations[t.O];if(null!=e){let S=Date.now()-e[0];o=" | TOOK: "+S+" MS",NotSimpleSocket.socketLatancy=S,null!=e[2]&&e[2](t.D),delete e}}null!=t.CF&&NotSimpleSocketAPI[t.CF](t.P),1==t.Close&&(NotSimpleSocketAPI.ExpectClose=!0),NotSimpleSocketAPI.Debug("DATA RECIEVED: "+e+o),null!=t.E&&(NotSimpleSocketAPI.RemoveSub(t.O),NotSimpleSocketAPI.Debug("ERROR: "+t.E,!0,!0))},NotSimpleSocketAPI.Close=function(){NotSimpleSocketAPI.Debug("CONNECTION LOST"),NotSimpleSocket.ClientID=null,NotSimpleSocket.ServerID=null},NotSimpleSocketAPI.Hash=function(e){let t=0;for(let o=0;o<e.length;o++){t=(t<<5)-t+e.charCodeAt(o),t&=t}return t},NotSimpleSocket.socketLatancy=0,NotSimpleSocket.CLIENT_ID="ClientID_REPLACE_ake83awi25",NotSimpleSocket.connect=async function(e){NotSimpleSocketAPI.IsConnecting=!0,NotSimpleSocketAPI.ID=e.project_id,NotSimpleSocketAPI.Token=e.client_token,await NotSimpleSocketAPI.TryConnection()},NotSimpleSocketAPI.DefaultConfig=null,NotSimpleSocket.setDefaultConfig=function(e){if(null==NotSimpleSocketAPI.IsConnecting)return void NotSimpleSocketAPI.Debug("ERROR: Must connect WebSocket first, call NotSimpleSocket.connect({ project_id, client_token });",!0,!0);NotSimpleSocketAPI.Debug("NEW CONFIG: Config: "+JSON.stringify(e));let t={Default:e};NotSimpleSocketAPI.SendData("DefaultConfig",t),NotSimpleSocketAPI.DefaultConfig=t},NotSimpleSocket.publishEvent=function(e,t,o){if(null==NotSimpleSocketAPI.IsConnecting)return void NotSimpleSocketAPI.Debug("ERROR: Must connect WebSocket first, call NotSimpleSocket.connect({ project_id, client_token });",!0,!0);NotSimpleSocketAPI.Debug("PUBLISHING: Filter: "+JSON.stringify(e)+" | Data: "+JSON.stringify(t)+" | Config: "+JSON.stringify(o));let S={Ftr:e,Data:t};null!=o&&(S.Con=o),NotSimpleSocketAPI.SendData("Publish",S)},NotSimpleSocket.subscribeEvent=function(e,t,o){if(null==NotSimpleSocketAPI.IsConnecting)return void NotSimpleSocketAPI.Debug("ERROR: Must connect WebSocket first, call NotSimpleSocket.connect({ project_id, client_token });",!0,!0);NotSimpleSocketAPI.Debug("SUBSCRIBING: Filter: "+JSON.stringify(e)+" | Config: "+JSON.stringify(o));let S={Ftr:e};return null!=o&&(S.Con=o),t.length<2&&(null==o&&(S.Con={}),S.Con.NoConfig=!0),"FUNCTION_SubEvent:"+NotSimpleSocketAPI.SendData("Subscribe",S,t)},NotSimpleSocketAPI.Broadcast=function(e){let t=Object.keys(NotSimpleSocketAPI.Operations);for(let o=0;o<t.length;o++){let S=NotSimpleSocketAPI.Operations[t[o]];null!=S.Callback&&S.Hash==e.Hash&&S.Callback(e.Data,e.Config)}},NotSimpleSocket.editSubscribe=function(e,t,o){if(null==NotSimpleSocketAPI.IsConnecting)return void NotSimpleSocketAPI.Debug("ERROR: Must connect WebSocket first, call NotSimpleSocket.connect({ project_id, client_token });",!0,!0);let S={};if(null!=t&&(S.Ftr=t),null!=o&&(S.Con=o),Object.keys(S)<1)return;let n=e.substring(18);if(null==NotSimpleSocketAPI.Operations[n])return;let l=NotSimpleSocketAPI.Operations[n].Data,i=null,c="";c+=null!=t?JSON.stringify(t):JSON.stringify(l.Ftr),c+=null!=o?JSON.stringify(o):JSON.stringify(l.Con),i=NotSimpleSocketAPI.Hash(c),i!=NotSimpleSocketAPI.Operations[n].Hash&&(S.PrevHash=NotSimpleSocketAPI.Operations[n].Hash,null!=t&&(NotSimpleSocketAPI.Operations[n].Data.Ftr=t,NotSimpleSocketAPI.Operations[n].Hash=i),null!=o&&(NotSimpleSocketAPI.Operations[n].Data.Con=o),NotSimpleSocketAPI.Debug("EDITING SUB: Function: "+e+" | New Filter: "+JSON.stringify(t)+" | New Config: "+JSON.stringify(o)),null!=NotSimpleSocket.ClientID&&NotSimpleSocketAPI.SendData("EditSub",S))},NotSimpleSocket.closeSubscribe=function(e){if(null==NotSimpleSocketAPI.IsConnecting)return void NotSimpleSocketAPI.Debug("ERROR: Must connect WebSocket first, call NotSimpleSocket.connect({ project_id, client_token });",!0,!0);let t=e.substring(18);null!=NotSimpleSocketAPI.Operations[t]&&(NotSimpleSocketAPI.Debug("CLOSING SUBSCRIBE: ID: "+e),NotSimpleSocketAPI.SendData("CloseSub",{Hash:NotSimpleSocketAPI.Operations[t].Hash}),NotSimpleSocketAPI.RemoveSub(t))},NotSimpleSocketAPI.DisconnectEvent=null,NotSimpleSocket.setDisconnectEvent=function(e,t,o){if(null==NotSimpleSocketAPI.IsConnecting)return void NotSimpleSocketAPI.Debug("ERROR: Must connect WebSocket first, call NotSimpleSocket.connect({ project_id, client_token });",!0,!0);NotSimpleSocketAPI.Debug("Setting Disconnect Event: Filter: "+JSON.stringify(e)+" | Data: "+JSON.stringify(t)+" | Config: "+JSON.stringify(o));let S={Ftr:e,Data:t};null!=o&&(S.Con=o),NotSimpleSocketAPI.SendData("DisPub",S),null!=e||null==NotSimpleSocketAPI.DisconnectEvent?NotSimpleSocketAPI.DisconnectEvent=S:delete NotSimpleSocketAPI.DisconnectEvent};
+NotSimpleSocket.connect({
+    project_id: "61d625c126c0c9aca64e748c",
+    client_token: "client_cd0fd75e06852dc44e05cb03d6bd56e621e"
+});
+NotSimpleSocket.subscribeEvent({Type: "Typing"}, function (Data, Config) {
+    if (Data.Username != Username) {
+        if (Data.Typing) {
+            document.getElementById(Data.PostID + "ChatTitleLiveUsers").innerHTML = "&bull; " + Data.Username + " is typing...";
+        } else {
+            document.getElementById(Data.PostID + "ChatTitleLiveUsers").innerHTML = "&bull; 0 Chatting";
+        }
+    }
+});
+NotSimpleSocket.setDisconnectEvent({Type: "Typing"}, function (Data, Config) {
+    NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: false});
+});
+document.addEventListener("focusin", function () {
+    if (document.activeElement.id.includes("TextBox")) {
+        document.activeElement.addEventListener("input", function (e) {
+            if (document.activeElement.innerHTML.length > 0) {
+                NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: true});
+            } else {
+                NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: false});
+            }
+        });
+        document.activeElement.addEventListener("keydown", function (e) {
+            if (e.key == "Enter") {
+                NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: false});
+            }
+        });
+    }
+});
