@@ -269,6 +269,7 @@ NotSimpleSocket.connect({
     project_id: "61d625c126c0c9aca64e748c",
     client_token: "client_cd0fd75e06852dc44e05cb03d6bd56e621e"
 });
+var rateLimit = 0;
 NotSimpleSocket.subscribeEvent({Type: "Typing"}, function (Data, Config) {
     if (Data.Username != Username) {
         if (Data.Typing) {
@@ -284,10 +285,14 @@ NotSimpleSocket.setDisconnectEvent({Type: "Typing"}, function (Data, Config) {
 document.addEventListener("focusin", function () {
     if (document.activeElement.id.includes("TextBox")) {
         document.activeElement.addEventListener("input", function (e) {
-            if (document.activeElement.innerHTML.length > 0) {
-                NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: true});
-            } else {
-                NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: false});
+            if (Date.now() > rateLimit) {
+                if (document.activeElement.innerHTML.length > 0) {
+                    NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: true});
+                    rateLimit = Date.now() + 300;
+                } else {
+                    NotSimpleSocket.publishEvent({Type: "Typing"}, {PostID: document.activeElement.id.replace("TextBox", ""), Username: Username, Typing: false});
+                    rateLimit = Date.now() + 300;
+                }
             }
         });
         document.activeElement.addEventListener("keydown", function (e) {
