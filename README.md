@@ -5,3 +5,7 @@ Features:
 + Change theme color
 + Save up to 5 themes
 + Adds typing notifications to chats
+
+How to Install:
++ Find a Chrome extension that lets you inject code into a website. Add it, and make sure it injects the code automatically. I use [https://chrome.google.com/webstore/detail/code-injector/jgcallaoodbhagkaoobenaabockcejmc](Code Injector).
++ Make sure you have the url to app.photop.live
