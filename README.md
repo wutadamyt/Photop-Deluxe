@@ -13,6 +13,6 @@ How to Install:
 ### Without an extension
 + Go to [code.js's raw page](https://raw.githubusercontent.com/wutadamyt/Photop-Deluxe/main/code.js) and copy the entire code.
 + Create a bookmark of any page.
-+ Right-click the bookmark, name it "Photop Deluxe", and type "javascript:" in the URL.
++ Right-click the bookmark, click "Edit", name it "Photop Deluxe", and type "javascript:" in the URL.
 + Paste the code and press Save.
 + Every time you open Photop, click Photop Deluxe in the bookmarks bar to activate it.
