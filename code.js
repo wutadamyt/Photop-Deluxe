@@ -16,7 +16,7 @@ function ChooseTheme() {
     } else {
         ThemeColor = x;
         storage.setItem("photop-theme-color", ThemeColor);
-        ShowPopUp("Theme Color Updated", "The theme color was updated. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+        ShowPopUp("Theme Color Updated", "The theme color was updated. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
     }
     updateSvgButtons();
 }
@@ -24,49 +24,49 @@ function SetClassicTheme() {
     ThemeColor = "#5ab7fa";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("Classic Theme Applied", "The Classic theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("Classic Theme Applied", "The Classic theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function SetBootopTheme() {
     ThemeColor = "#eb6123";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("Bootop Theme Applied", "The Bootop theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("Bootop Theme Applied", "The Bootop theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function SetTurkeytopTheme() {
     ThemeColor = "#c2491d";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("Turkeytop Theme Applied", "The Turkeytop theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("Turkeytop Theme Applied", "The Turkeytop theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function SetOGTheme() {
     ThemeColor = "#a587ff";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("OG Theme Applied", "The OG theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("OG Theme Applied", "The OG theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function SetChristmasRedTheme() {
     ThemeColor = "#FF3135";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("Christmas Red Theme Applied", "The Christmas Red theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("Christmas Red Theme Applied", "The Christmas Red theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function SetChristmasGreenTheme() {
     ThemeColor = "#3DB471";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("Christmas Green Theme Applied", "The Christmas Green theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("Christmas Green Theme Applied", "The Christmas Green theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function Set1kTheme() {
     ThemeColor = "#FFC24A";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("1k Users Theme Applied", "The 1k Users theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("1k Users Theme Applied", "The 1k Users theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function SetHeartTopTheme() {
     ThemeColor = "#FF79B9";
     storage.setItem("photop-theme-color", ThemeColor);
     updateSvgButtons();
-    ShowPopUp("❤top Theme Applied", "The ❤top theme was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
+    ShowPopUp("❤top Theme Applied", "The ❤top theme was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]]);
 }
 function MyThemes() {
     ShowPopUp("Saved Themes", "Here are the themes you've saved. You can save up to 5.", [["1", storage.getItem("photop-theme-1"), "Theme1"],["2", storage.getItem("photop-theme-2"), "Theme2"],["3", storage.getItem("photop-theme-3"), "Theme3"],["4", storage.getItem("photop-theme-4"), "Theme4"],["5", storage.getItem("photop-theme-5"), "Theme5"],["Back", "gray", "ChangeTheme"]]);
@@ -91,7 +91,7 @@ function SetTheme1() {
     storage.setItem("photop-theme-color", storage.getItem("photop-theme-1"));
     ThemeColor = storage.getItem("photop-theme-1");
     updateSvgButtons();
-    ShowPopUp("Theme 1 Applied", "The theme color in slot 1 was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]])
+    ShowPopUp("Theme 1 Applied", "The theme color in slot 1 was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]])
 }
 function DeleteTheme1() {
     ShowPopUp("Delete Theme 1?", "Are you sure you want to delete the theme color in slot 1? You won't be able to undo this action.", [["Yes", "tomato", "Del1"],["No", "gray", "Theme1"]]);
@@ -120,7 +120,7 @@ function SetTheme2() {
     storage.setItem("photop-theme-color", storage.getItem("photop-theme-2"));
     ThemeColor = storage.getItem("photop-theme-2");
     updateSvgButtons();
-    ShowPopUp("Theme 2 Applied", "The theme color in slot 2 was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]])
+    ShowPopUp("Theme 2 Applied", "The theme color in slot 2 was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]])
 }
 function DeleteTheme2() {
     ShowPopUp("Delete Theme 2?", "Are you sure you want to delete the theme color in slot 2? You won't be able to undo this action.", [["Yes", "tomato", "Del2"],["No", "gray", "Theme2"]]);
@@ -149,7 +149,7 @@ function SetTheme3() {
     storage.setItem("photop-theme-color", storage.getItem("photop-theme-3"));
     ThemeColor = storage.getItem("photop-theme-3");
     updateSvgButtons();
-    ShowPopUp("Theme 3 Applied", "The theme color in slot 3 was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]])
+    ShowPopUp("Theme 3 Applied", "The theme color in slot 3 was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]])
 }
 function DeleteTheme3() {
     ShowPopUp("Delete Theme 3?", "Are you sure you want to delete the theme color in slot 3? You won't be able to undo this action.", [["Yes", "tomato", "Del3"],["No", "gray", "Theme3"]]);
@@ -178,7 +178,7 @@ function SetTheme4() {
     storage.setItem("photop-theme-color", storage.getItem("photop-theme-4"));
     ThemeColor = storage.getItem("photop-theme-4");
     updateSvgButtons();
-    ShowPopUp("Theme 4 Applied", "The theme color in slot 4 was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]])
+    ShowPopUp("Theme 4 Applied", "The theme color in slot 4 was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]])
 }
 function DeleteTheme4() {
     ShowPopUp("Delete Theme 4?", "Are you sure you want to delete the theme color in slot 4? You won't be able to undo this action.", [["Yes", "tomato", "Del4"],["No", "gray", "Theme4"]]);
@@ -207,7 +207,7 @@ function SetTheme5() {
     storage.setItem("photop-theme-color", storage.getItem("photop-theme-5"));
     ThemeColor = storage.getItem("photop-theme-5");
     updateSvgButtons();
-    ShowPopUp("Theme 5 Applied", "The theme color in slot 5 was applied. It will take effect the next time you reload.", [["Okay", ThemeColor, "PhotopDeluxe"]])
+    ShowPopUp("Theme 5 Applied", "The theme color in slot 5 was applied. Click the Home button to fully update the theme.", [["Okay", ThemeColor, "PhotopDeluxe"]])
 }
 function DeleteTheme5() {
     ShowPopUp("Delete Theme 5?", "Are you sure you want to delete the theme color in slot 5? You won't be able to undo this action.", [["Yes", "tomato", "Del5"],["No", "gray", "Theme5"]]);
@@ -285,7 +285,7 @@ var rateLimit = 0;
 NotSimpleSocket.subscribeEvent({Type: "Typing"}, function (Data, Config) {
     if (Data.Username != Username) {
         if (Data.Typing) {
-            document.getElementById(Data.PostID + "ChatTitleLiveUsers").innerHTML = "&bull; " + Data.Username + " is typing...";
+            document.getElementById(Data.PostID + "ChatTitleLiveUsers").innerHTML = "&bull; " + Data.Username.replace(/</g, "&lt;") + " is typing...";
         } else {
             document.getElementById(Data.PostID + "ChatTitleLiveUsers").innerHTML = "&bull; 0 Chatting";
         }
